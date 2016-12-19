@@ -3,11 +3,14 @@ from bs4 import BeautifulSoup
 
 BASE_URL ="https://www.mercari.com/jp/search/?"
 
-category_root = sys.argv[1]
-category_child = sys.argv[2]
-size_group = sys.argv[3]
+category_grand_child = sys.argv[1]
 
-url = BASE_URL + "category_root=" + category_root + "category_child=" + category_child + "size_group=" + size_group 
+size_group = ""
+
+if len(sys.argv) > 2:
+	size_group = sys.argv[2]
+
+url = BASE_URL + "category_grand_child[" + category_grand_child + "]=1&size_group=" + size_group 
 
 def fetch_html(url):
 	return urllib2.urlopen(url)
